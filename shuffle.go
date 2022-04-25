@@ -1,8 +1,8 @@
 package slices
 
-func Shuffle[T any](nextInt func(int) int, values []T) []T {
-	shuffled := make([]T, len(values))
-	copy(shuffled, values)
+func (s Slice[T]) Shuffle(nextInt func(int) int) []T {
+	shuffled := make([]T, len(s))
+	copy(shuffled, s)
 
 	for i := len(shuffled) - 1; i > 0; i-- {
 		j := nextInt(i + 1)

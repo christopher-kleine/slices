@@ -1,7 +1,7 @@
 package slices
 
-func Partition[T comparable](slice []T, isLeft func(value T) bool) (left, right []T) {
-	for _, v := range slice {
+func (s Slice[T]) Partition(isLeft func(T) bool) (left, right []T) {
+	for _, v := range s {
 		if isLeft(v) {
 			left = append(left, v)
 		} else {
@@ -12,26 +12,26 @@ func Partition[T comparable](slice []T, isLeft func(value T) bool) (left, right 
 	return left, right
 }
 
-func Partition2[T comparable](slice []T, isLeft func(value T, index int) bool) (left, right []T) {
-	for index, v := range slice {
-		if isLeft(v, index) {
-			left = append(left, v)
-		} else {
-			right = append(right, v)
-		}
-	}
+// func Partition2[T comparable](slice []T, isLeft func(value T, index int) bool) (left, right []T) {
+// 	for index, v := range slice {
+// 		if isLeft(v, index) {
+// 			left = append(left, v)
+// 		} else {
+// 			right = append(right, v)
+// 		}
+// 	}
 
-	return left, right
-}
+// 	return left, right
+// }
 
-func Partition3[T comparable](slice []T, isLeft func(value T, index int, src []T) bool) (left, right []T) {
-	for index, v := range slice {
-		if isLeft(v, index, slice) {
-			left = append(left, v)
-		} else {
-			right = append(right, v)
-		}
-	}
+// func Partition3[T comparable](slice []T, isLeft func(value T, index int, src []T) bool) (left, right []T) {
+// 	for index, v := range slice {
+// 		if isLeft(v, index, slice) {
+// 			left = append(left, v)
+// 		} else {
+// 			right = append(right, v)
+// 		}
+// 	}
 
-	return left, right
-}
+// 	return left, right
+// }
